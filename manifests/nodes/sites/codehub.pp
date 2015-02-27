@@ -1,6 +1,6 @@
 class codehub {
     $folder = "codehub"
-    $docroot = "${folder}/_site"
+    $docroot = "${folder}"
     $domain = "dev.codehub.org.uk"
 
     file { "/var/www/${folder}" :
@@ -14,6 +14,12 @@ class codehub {
         port    => '80',
         docroot => "/var/www/${docroot}",
         template => "/vagrant/manifests/nodes/templates/vhosts/vhost.erb"
+    }
+
+    mysql::db { 'codehub_dev':
+        user     => 'codehub_dev',
+        password => 'password',
+        host     => 'localhost'
     }
 }
 

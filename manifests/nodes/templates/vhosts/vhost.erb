@@ -7,7 +7,7 @@
     ErrorLog  /var/log/apache2/<%= @domain %>-error_log
     CustomLog /var/log/apache2/<%= @domain %>-access_log common
 
-    <Directory /var/www>
+    <Directory <%= @docroot %>>
         AllowOverride All
     </Directory>
 

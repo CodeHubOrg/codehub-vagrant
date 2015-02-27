@@ -22,3 +22,9 @@
 [submodule "modules/wget"]
 	path = modules/wget
 	url = git@github.com:maestrodev/puppet-wget.git
+[submodule "modules/staging"]
+	path = modules/staging
+	url = git@github.com:nanliu/puppet-staging.git
+[submodule "modules/mysql"]
+	path = modules/mysql
+	url = git@github.com:puppetlabs/puppetlabs-mysql.git
