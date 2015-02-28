@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   end
 
   # Create a public network
-  config.vm.network "public_network"
+  config.vm.network "private_network", type: "dhcp"
 
   # Due to some issues with the ssh keys that arises when a
   # VM becomes disassociated with vagrant we are just using
@@ -30,13 +30,13 @@ Vagrant.configure("2") do |config|
   # Provider (VirtualBox, VMWare, ect) configuration
   # Example using VirtualBox:
   config.vm.provider :virtualbox do |vb|
-    # Boot with headless mode
+    # Boot without headless mode
     vb.gui = true
 
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "2024"]
     # To add cores
-    vb.customize ["modifyvm", :id, "--cpus", "2"]
+    vb.customize ["modifyvm", :id, "--cpus", "1"]
     #vb.customize ["modifyvm", :id, "--ioapic", "on"]
 
     # Via http://blog.liip.ch/archive/2012/07/25/vagrant-and-node-js-quick-tip.html
