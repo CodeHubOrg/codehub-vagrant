@@ -4,9 +4,9 @@
     of the packages we require in the main stage
 */
 class first_stage {
-    apt::ppa { 'ppa:ondrej/php5 -y':
-        require => Package['software-properties-common']
-    }
+    package { "software-properties-common":}
+    ->
+    apt::ppa { 'ppa:ondrej/php5 -y':}
 }
 
 /*
