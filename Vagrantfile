@@ -49,6 +49,10 @@ Vagrant.configure("2") do |config|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "base.pp"
     puppet.module_path = "modules"
+    # path on host machine to hiera.yaml
+    puppet.hiera_config_path = 'hiera/hiera.yaml'
+    # This sets the relative path for hiera data directories
+    puppet.working_directory = '/vagrant'
 
     # use facter to pass a hash of variables to puppet set as facter variables
     puppet.facter = {
