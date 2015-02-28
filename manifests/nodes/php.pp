@@ -25,8 +25,8 @@ package
 
 file { "/etc/php5/apache2/php.ini":
     ensure => present,
-    group => root,
-    owner => root,
+    group => "vagrant",
+    owner => "vagrant",
     notify => Service['apache2'],
     source => '/vagrant/manifests/nodes/templates/php/php.ini',
     require => [Package['php5'], Package['apache2']],
@@ -34,8 +34,8 @@ file { "/etc/php5/apache2/php.ini":
 
 file { "/etc/php5/cli/php.ini":
     ensure => present,
-    group => root,
-    owner => root,
+    group => "vagrant",
+    owner => "vagrant",
     notify => Service['apache2'],
     source => '/vagrant/manifests/nodes/templates/php/cli.php.ini',
     require => [Package['php5']],
