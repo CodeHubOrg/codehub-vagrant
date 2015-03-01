@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     _stages = "yes"
   end
 
-  # Create a public network
+  # Networking
   config.vm.network "private_network", type: "dhcp"
 
   # Due to some issues with the ssh keys that arises when a
@@ -23,12 +23,11 @@ Vagrant.configure("2") do |config|
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
+  # the path on the guest to mount the folder.
   config.vm.synced_folder "../", "/var/www"
 
   # Provider (VirtualBox, VMWare, ect) configuration
-  # Example using VirtualBox:
+  # Using VirtualBox:
   config.vm.provider :virtualbox do |vb|
     # Boot without headless mode
     vb.gui = true
@@ -41,16 +40,14 @@ Vagrant.configure("2") do |config|
     vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
   end
 
-  # Enable provisioning with Puppet stand alone. Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
+  # Provisioning (puppet, chef, ansible, salt, .sh ect) configuration
+  # Using Puppet
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "base.pp"
     puppet.module_path = "modules"
-    # path on host machine to hiera.yaml
-    puppet.hiera_config_path = 'hiera/hiera.yaml'
-    # This sets the relative path for hiera data directories
-    puppet.working_directory = '/vagrant'
+    puppet.hiera_config_path = 'hiera/hiera.yaml' # path on host machine
+    puppet.working_directory = '/vagrant' # Relative path for hiera data directories
 
     # use facter to pass a hash of variables to puppet set as facter variables
     puppet.facter = {
