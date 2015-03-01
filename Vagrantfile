@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "codekipple/ubuntu-trusty64-latestpuppet"
+  config.vm.box = "codekipple/ubuntu-trusty32-latestpuppet"
 
-  config.vm.hostname = "vagrant.dev.com"
+  config.vm.hostname = "dev.codehub.org.uk"
 
   if ENV['vm_stages'] == "no"
     _stages = "no"
@@ -35,9 +35,7 @@ Vagrant.configure("2") do |config|
 
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "2024"]
-    # To add cores
     vb.customize ["modifyvm", :id, "--cpus", "1"]
-    #vb.customize ["modifyvm", :id, "--ioapic", "on"]
 
     # Via http://blog.liip.ch/archive/2012/07/25/vagrant-and-node-js-quick-tip.html
     vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
