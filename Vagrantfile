@@ -4,8 +4,6 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "codekipple/ubuntu-trusty32-latestpuppet"
 
-  config.vm.hostname = "dev.codehub.org.uk"
-
   if ENV['vm_stages'] == "no"
     _stages = "no"
   else
